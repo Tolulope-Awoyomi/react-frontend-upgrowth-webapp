@@ -6,8 +6,8 @@ const link = {
     padding: '12px',
     margin: '0 6px 6px',
     textDecoration: 'none',
-    color: 'white',
-    background: 'lemon'
+    color: 'blue',
+    background: 'skyblue'
 }
 
 function Navigation() {
@@ -17,9 +17,6 @@ function Navigation() {
             to="/"
             exact
             style={link}
-            activeStyle={{
-                background: 'green'
-            }}
             > Home
         </NavLink>
 
@@ -27,9 +24,6 @@ function Navigation() {
             to="/aspects"
             exact
             style={link}
-            activeStyle={{
-                background: 'green'
-            }}
             > Life Aspects
         </NavLink>
     </div>
