@@ -4,6 +4,7 @@ import './App.css';
 import Home from './components/Home';
 import Navigation from './components/Navigation';
 import Aspects from './containers/Aspects';
+import Aspect from './containers/Aspect';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/aspects" element={<Aspects />} />
+          <Route path="/aspects/:id" element={<Aspect />} />
         </Routes>
         
     </div>
