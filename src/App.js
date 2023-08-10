@@ -12,7 +12,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          {/* <Route path="/aspects" element={Aspect} /> */}
+          {/* <Route path="/aspects" element={Aspects />} */}
         </Routes>
         
     </div>
