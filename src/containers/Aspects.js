@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import AspectLink from "../components/AspectLink";
+import AspectForm from "../containers/AspectForm";
 
 function Aspects() {
     const [aspects, setAspects] = useState([])
@@ -13,9 +14,17 @@ function Aspects() {
         })
     }, [])
 
+    function handleAddAspect(newAspect) {
+        setAspects([...aspects, newAspect])
+    }
+
     const aspectsList = aspects.map(aspect => <AspectLink key={aspect.id} aspect={aspect}/>)
   return (
+    <>
     <div>{aspectsList}</div>
+    <AspectForm onAddAspect={handleAddAspect}/>
+    </>
+    
   )
 }
 
