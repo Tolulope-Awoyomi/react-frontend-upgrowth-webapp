@@ -14,13 +14,14 @@ function Aspect() {
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            setAspect(data)
         })
     }, [])
 
     const strategies = aspect.strategies.map(strategy => <Strategy id={strategy.id} strategy={strategy}/>)
   return (
     <div> 
-        <h3>{aspect.name}</h3>
+        <h3>{aspect.name}: </h3>
         <hr/>
         {strategies}
     </div>
