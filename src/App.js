@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Home from './components/Home';
 import Navigation from './components/Navigation';
+import Aspects from './containers/Aspects';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          {/* <Route path="/aspects" element={Aspects />} */}
+          <Route path="/aspects" element={<Aspects />} />
         </Routes>
         
     </div>
