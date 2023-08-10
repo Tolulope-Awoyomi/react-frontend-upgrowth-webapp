@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import AspectLink from "../components/AspectLink";
 
 function Aspects() {
     const [aspects, setAspects] = useState([])
@@ -11,8 +12,10 @@ function Aspects() {
             setAspects(data)
         })
     }, [])
+
+    const aspectsList = aspects.map(aspect => <AspectLink key={aspect.id} aspect={aspect}/>)
   return (
-    <div>Aspects</div>
+    <div>{aspectsList}</div>
   )
 }
 
