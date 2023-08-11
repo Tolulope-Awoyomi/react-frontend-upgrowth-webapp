@@ -33,6 +33,17 @@ function App() {
       setStrategy([...aspect, newStrategy])
     }
 
+    function handleUpdateMessage(updatedMessageObj) {
+      const updatedMessages = messages.map((message) => {
+        if (message.id === updatedMessageObj.id) {
+          return updatedMessageObj;
+        } else {
+          return message;
+        }
+      });
+      setMessages(updatedMessages);
+    }
+
   return (
     <>
       <div className="App">
