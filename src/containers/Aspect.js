@@ -1,31 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
-import Strategy from "../components/Strategy";
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import Strategy from '../components/Strategy';
+import StrategyForm from './StrategyForm';
 
-function Aspect() {
-    const [aspect, setAspect] = useState({
-        strategies: []
+function Aspect({ aspects, setStrategy, handleAddStrategy }) {
+  const params = useParams();
+  const aspectId = parseInt(params.id); // Convert the id to an integer
+
+  // Find the selected aspect from the aspects array
+  const selectedAspect = aspects.find((aspect) => aspect.id === aspectId);
+
+  function addStrategy(strategy) {
+    fetch('http://localhost:9292/strategies', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: strategy.name,
+        aspect_id: aspectId,
+      }),
     })
+      .then((r) => r.json())
+      .then((newStrategy) => {
+        handleAddStrategy(newStrategy);
+        setStrategy('');
+      });
+  }
 
-    const params = useParams();
+  if (!selectedAspect) {
+    return <div>Loading...</div>;
+  }
 
-    useEffect(() => {
-        fetch(`http://localhost:9292/aspects/${params.id}`)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            setAspect(data)
-        })
-    }, [])
-
-    const strategies = aspect.strategies.map(strategy => <Strategy id={strategy.id} strategy={strategy}/>)
   return (
-    <div> 
-        <h3>{aspect.name}: </h3>
-        <hr/>
-        {strategies}
+    <div>
+      <h3>{selectedAspect.name}</h3>
+      <hr />
+      {selectedAspect.strategies.map((strategy) => (
+        <Strategy key={strategy.id} id={strategy.id} strategy={strategy} />
+      ))}
+      <StrategyForm handleAddStrategy={addStrategy} />
     </div>
-  )
+  );
 }
 
-export default Aspect
+export default Aspect;
