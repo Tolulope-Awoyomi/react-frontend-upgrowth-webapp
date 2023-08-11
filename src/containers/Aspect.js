@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Strategy from '../components/Strategy';
 import StrategyForm from './StrategyForm';
 
-function Aspect({ aspects, setStrategy, handleAddStrategy }) {
+function Aspect({ aspects, setStrategy, handleAddStrategy, handleUpdateStrategy }) {
   const params = useParams();
   const aspectId = parseInt(params.id); // Convert the id to an integer
 
@@ -16,7 +16,7 @@ function Aspect({ aspects, setStrategy, handleAddStrategy }) {
       <h3>{selectedAspect.name}</h3>
       <hr />
       {selectedAspect.strategies.map((strategy) => (
-        <Strategy key={strategy.id} id={strategy.id} strategy={strategy} />
+        <Strategy key={strategy.id} id={strategy.id} strategy={strategy} handleUpdateStrategy={handleUpdateStrategy} />
       ))}
       <StrategyForm aspects={aspects} setStrategy= {setStrategy} handleAddStrategy={handleAddStrategy} aspectId={aspectId}/>
     </div>

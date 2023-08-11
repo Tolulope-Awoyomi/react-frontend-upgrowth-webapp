@@ -33,15 +33,15 @@ function App() {
       setStrategy([...aspect, newStrategy])
     }
 
-    function handleUpdateMessage(updatedMessageObj) {
-      const updatedMessages = messages.map((message) => {
-        if (message.id === updatedMessageObj.id) {
-          return updatedMessageObj;
+    function handleUpdateStrategy(updatedStrategy) {
+      const updatedStrategies = aspect.map((asp) => {
+        if (asp.id === updatedStrategy.id) {
+          return updatedStrategy;
         } else {
-          return message;
+          return asp;
         }
       });
-      setMessages(updatedMessages);
+      setStrategy(updatedStrategies);
     }
 
   return (
@@ -52,7 +52,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/aspects" element={<Aspects aspects={aspects} handleAddAspect={handleAddAspect} />} />
-          <Route path="/aspects/:id" element={<Aspect aspects={aspects}  setStrategy={setStrategy} handleAddStrategy={handleAddStrategy}/>} />
+          <Route path="/aspects/:id" element={<Aspect aspects={aspects}  setStrategy={setStrategy} handleAddStrategy={handleAddStrategy} handleUpdateStrategy={handleUpdateStrategy}/>} />
         </Routes>
         
     </div>
