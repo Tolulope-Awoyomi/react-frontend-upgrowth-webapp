@@ -10,7 +10,7 @@ import Aspect from './containers/Aspect';
 function App() {
   const [aspects, setAspects] = useState([])
   const [strategy, setStrategy] = useState([])
-  const [aspect, setAspect] = useState({
+   const [aspect, setAspect] = useState({
         strategies: []
     })
 
@@ -21,7 +21,7 @@ function App() {
             console.log(data)
             setAspects(data)
             setAspect(data)
-            setStrategy(data.strategies)
+            // setStrategy(data.strategies)
         })
     }, [])
 
@@ -30,7 +30,7 @@ function App() {
     }
 
     function handleAddStrategy(newStrategy) {
-      setStrategy([...strategy, newStrategy])
+      setStrategy([...aspect, newStrategy])
     }
 
   return (
@@ -41,7 +41,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/aspects" element={<Aspects aspects={aspects} handleAddAspect={handleAddAspect} />} />
-          <Route path="/aspects/:id" element={<Aspect aspects={aspects} setAspect={setAspect} strategy={strategy} setStrategy={setStrategy} handleAddStrategy={handleAddStrategy}/>} />
+          <Route path="/aspects/:id" element={<Aspect aspects={aspects}  setStrategy={setStrategy} handleAddStrategy={handleAddStrategy}/>} />
         </Routes>
         
     </div>

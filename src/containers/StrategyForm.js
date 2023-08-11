@@ -1,24 +1,29 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
 
-function StrategyForm({onAddStrategy}) {
-    const [name, setName] = useState("")
+function StrategyForm({ aspects, setStrategy, handleAddStrategy, aspectId }) {
+  const [name, setName] = useState('');
 
-    function handleSubmit(e) {
-        e.preventDefault();
-    
-        fetch("http://localhost:9292/strategies", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ name: name }),
-        })
-          .then((r) => r.json())
-          .then((newStrategy) => {
-            onAddStrategy(newStrategy);
-            setName("");
-          });
-      }
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    fetch('http://localhost:9292/strategies', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name,
+        aspect_id: aspectId,
+      }),
+    })
+      .then((response) => response.json())
+      .then((newStrategy) => {
+        // Handle the new strategy data
+        handleAddStrategy(newStrategy);
+        // setStrategy('');
+        setName('');
+      })
+    }
 
   return (
     <form className="new-strategy" onSubmit={handleSubmit}>
@@ -35,5 +40,4 @@ function StrategyForm({onAddStrategy}) {
   );
 }
 
-
-export default StrategyForm
+export default StrategyForm;
