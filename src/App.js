@@ -34,15 +34,25 @@ function App() {
     }
 
     function handleUpdateStrategy(updatedStrategy) {
-      const updatedStrategies = aspect.map((asp) => {
-        if (asp.id === updatedStrategy.id) {
+      // Map over the existing strategies in the aspects object
+      const updatedStrategies = aspects.strategies.map((strategy) => {
+        // Check if the strategy id matches the updatedStrategy id
+        if (strategy.id === updatedStrategy.id) {
+          // If it matches, return the updatedStrategy
           return updatedStrategy;
         } else {
-          return asp;
+          // Otherwise, return the original strategy
+          return strategy;
         }
       });
-      setStrategy(updatedStrategies);
+    
+      // Set the updated strategies back to the aspects object
+      setAspects({
+        ...aspects, // Keep the other properties of aspects unchanged
+        strategies: updatedStrategies, // Update the strategies array
+      });
     }
+    
 
   return (
     <>
