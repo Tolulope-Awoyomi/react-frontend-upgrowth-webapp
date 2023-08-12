@@ -10,9 +10,6 @@ import Aspect from './containers/Aspect';
 function App() {
   const [aspects, setAspects] = useState([])
   const [strategy, setStrategy] = useState([])
-   const [aspect, setAspect] = useState({
-        strategies: []
-    })
 
     useEffect(() => {
         fetch("http://localhost:9292/aspects")
@@ -20,8 +17,6 @@ function App() {
         .then(data => {
             console.log(data)
             setAspects(data)
-            setAspect(data)
-            // setStrategy(data.strategies)
         })
     }, [])
 
@@ -30,9 +25,23 @@ function App() {
     }
 
     function handleAddStrategy(newStrategy) {
-      setStrategy([...aspect, newStrategy])
+      // Find the specific aspect object to update its strategies
+      const updatedAspects = aspects.map((aspect) => {
+        if (aspect.id === newStrategy.aspect_id) {
+          // Update the strategies property for the matching aspect object
+          return {
+            ...aspect,
+            strategies: [...aspect.strategies, newStrategy],
+          };
+        } else {
+          return aspect; // Return other aspect objects unchanged
+        }
+      });
+      
+      // Set the state of aspects with the updated array of aspect objects
+      setAspects(updatedAspects);
     }
-
+    
     function handleUpdateStrategy(updatedStrategy) {
       // Map over the existing strategies in the aspects object
       const updatedStrategies = aspects.strategies.map((strategy) => {

@@ -19,6 +19,7 @@ function StrategyEditForm({ strategy, handleUpdateStrategy }) {
       .then((r) => r.json())
       .then((updatedStrategy) => handleUpdateStrategy(updatedStrategy));
   }
+  
 
   function handleDeleteClick() {
     fetch(`http://localhost:9292/strategies/${strategy.id}`, {
