@@ -43,24 +43,24 @@ function App() {
     }
     
     function handleUpdateStrategy(updatedStrategy) {
-      // Map over the existing strategies in the aspects object
-      const updatedStrategies = aspects.strategies.map((strategy) => {
-        // Check if the strategy id matches the updatedStrategy id
-        if (strategy.id === updatedStrategy.id) {
-          // If it matches, return the updatedStrategy
-          return updatedStrategy;
+      // Map over the aspects array to find the aspect containing the updated strategy
+      const updatedAspects = aspects.map((aspect) => {
+        if (aspect.strategies.some((strategy) => strategy.id === updatedStrategy.id)) {
+          // Replace the existing strategy with the updatedStrategy
+          const updatedStrategies = aspect.strategies.map((strategy) =>
+            strategy.id === updatedStrategy.id ? updatedStrategy : strategy
+          );
+          // Return the aspect with the updated strategies
+          return { ...aspect, strategies: updatedStrategies };
         } else {
-          // Otherwise, return the original strategy
-          return strategy;
+          return aspect; // Return other aspect objects unchanged
         }
       });
     
-      // Set the updated strategies back to the aspects object
-      setAspects({
-        ...aspects, // Keep the other properties of aspects unchanged
-        strategies: updatedStrategies, // Update the strategies array
-      });
+      // Set the state of aspects with the updated array of aspect objects
+      setAspects(updatedAspects);
     }
+    
 
     function handleDeleteStrategy(id) {
       // Find the specific aspect object to update its strategies
@@ -80,7 +80,6 @@ function App() {
       // Set the state of aspects with the updated array of aspect objects
       setAspects(updatedAspects);
     }
-    
     
 
   return (

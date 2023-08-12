@@ -4,7 +4,7 @@ import StrategyEditForm from '../containers/StrategyEditForm';
 function Strategy({strategy, handleUpdateStrategy, handleDeleteStrategy}) {
   return (
     <div>
-        <p>{strategy.name}</p>
+        {/* <p>{strategy.name}</p> */}
         <StrategyEditForm strategy={strategy} handleUpdateStrategy={handleUpdateStrategy} handleDeleteStrategy={handleDeleteStrategy}/>
         <hr />
     </div>
