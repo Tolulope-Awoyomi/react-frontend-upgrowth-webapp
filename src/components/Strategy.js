@@ -1,11 +1,11 @@
 import React from 'react';
 import StrategyEditForm from '../containers/StrategyEditForm';
 
-function Strategy({id, strategy, handleUpdateStrategy}) {
+function Strategy({strategy, handleUpdateStrategy}) {
   return (
     <div>
         <p>{strategy.name}</p>
-        <StrategyEditForm strategy={strategy} id={id} handleUpdateStrategy={handleUpdateStrategy}/>
+        <StrategyEditForm strategy={strategy} handleUpdateStrategy={handleUpdateStrategy}/>
         <hr />
     </div>
   )

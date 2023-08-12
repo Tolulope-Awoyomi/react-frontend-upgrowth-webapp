@@ -18,9 +18,7 @@ function StrategyForm({ aspects, setStrategy, handleAddStrategy, aspectId }) {
     })
       .then((response) => response.json())
       .then((newStrategy) => {
-        // Handle the new strategy data
         handleAddStrategy(newStrategy);
-        // setStrategy('');
         setName('');
       })
     }

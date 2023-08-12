@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
-function StrategyEditForm({ id, strategy, handleUpdateStrategy }) {
+function StrategyEditForm({ strategy, handleUpdateStrategy }) {
 
   const [nameBody, setNameBody] = useState(strategy.name);
 
   function handleStrategyEdit(e) {
     e.preventDefault();
 
-    fetch(`http://localhost:9292/strategies/${id}`, {
+    fetch(`http://localhost:9292/strategies/${strategy.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -21,18 +21,11 @@ function StrategyEditForm({ id, strategy, handleUpdateStrategy }) {
   }
 
   function handleDeleteClick() {
-    fetch(`http://localhost:9292/strategies/${id}`, {
+    fetch(`http://localhost:9292/strategies/${strategy.id}`, {
       method: 'DELETE'
     })
   }
 
-  // function handleOptionChange(e) {
-  //   setSelectedOption(e.target.value);
-  // }
-
-  // function handleStatementChange(e) {
-  //   setNameBody(e.target.value);
-  // }
 
   return (
     <div className="actions">
