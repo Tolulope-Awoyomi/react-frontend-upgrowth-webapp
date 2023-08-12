@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function StrategyEditForm({ strategy, handleUpdateStrategy }) {
+function StrategyEditForm({ strategy, handleUpdateStrategy, handleDeleteStrategy }) {
 
   const [nameBody, setNameBody] = useState(strategy.name);
 
@@ -25,6 +25,8 @@ function StrategyEditForm({ strategy, handleUpdateStrategy }) {
     fetch(`http://localhost:9292/strategies/${strategy.id}`, {
       method: 'DELETE'
     })
+    
+    handleDeleteStrategy(strategy.id)
   }
 
 

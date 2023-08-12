@@ -61,6 +61,26 @@ function App() {
         strategies: updatedStrategies, // Update the strategies array
       });
     }
+
+    function handleDeleteStrategy(id) {
+      // Find the specific aspect object to update its strategies
+      const updatedAspects = aspects.map((aspect) => {
+        if (aspect.strategies.some((strategy) => strategy.id === id)) {
+          // Filter out the strategy with the specified id
+          const updatedStrategies = aspect.strategies.filter(
+            (strategy) => strategy.id !== id
+          );
+          // Return the aspect with the updated strategies
+          return { ...aspect, strategies: updatedStrategies };
+        } else {
+          return aspect; // Return other aspect objects unchanged
+        }
+      });
+    
+      // Set the state of aspects with the updated array of aspect objects
+      setAspects(updatedAspects);
+    }
+    
     
 
   return (
@@ -71,7 +91,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/aspects" element={<Aspects aspects={aspects} handleAddAspect={handleAddAspect} />} />
-          <Route path="/aspects/:id" element={<Aspect aspects={aspects}  setStrategy={setStrategy} handleAddStrategy={handleAddStrategy} handleUpdateStrategy={handleUpdateStrategy}/>} />
+          <Route path="/aspects/:id" element={<Aspect aspects={aspects}  setStrategy={setStrategy} handleAddStrategy={handleAddStrategy} handleUpdateStrategy={handleUpdateStrategy} handleDeleteStrategy={handleDeleteStrategy}/>} />
         </Routes>
         
     </div>
