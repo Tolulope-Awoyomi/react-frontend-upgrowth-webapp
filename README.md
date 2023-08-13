@@ -13,7 +13,6 @@ Welcome to the frontend of the **UpGrowtht** application. This project aims to p
 - [Requirements Fulfilled](#requirements-fulfilled)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Getting Started
 
