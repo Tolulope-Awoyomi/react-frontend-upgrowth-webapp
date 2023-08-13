@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+# UpGrowth App (Frontend)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the frontend of the **UpGrowtht** application. This project aims to provide a user-friendly interface for managing aspects of our lives with specific strategies, allowing users to create, read, update, and delete items efficiently. By integrating React for the frontend and using a Sinatra API for the backend, I've created a robust platform for managing hierarchical data.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Integration with Backend](#integration-with-backend)
+- [Frontend State Management](#frontend-state-management)
+- [RESTful Routes](#restful-routes)
+- [Optimal Backend Usage](#optimal-backend-usage)
+- [Requirements Fulfilled](#requirements-fulfilled)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To get started with the frontend, follow these steps:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **Clone the repository:** First, clone this repository to your local machine.
 
-### `npm test`
+```bash
+git clone <repository-url>
+cd aspects-strategies-frontend
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Install Dependencies:** Use npm or yarn to install the required dependencies.
 
-### `npm run build`
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Start the Development Server:** Start the development server to preview the frontend.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. **Access the Application:** Once the development server is running, you can access the application in your browser at `http://localhost:3000`.
 
-### `npm run eject`
+## Project Structure
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Here's a brief overview of the project structure:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **`public/`:** This directory contains the public assets, including the HTML file where the React app is mounted.
+- **`src/`:** The main source code directory where the React components, services, styles, and other application logic reside.
+  - **`components/ & containers/`:** Contains React components that make up the UI of the application.
+  - **`services/`:** Provides API services to communicate with the backend Sinatra server.
+  - **`styles/`:** Holds the styling files, such as CSS or SCSS.
+  - **`App.js`:** The main application component where the routing (derived from BrowerRouter imported in `index.js`) and high-level structure are defined.
+  - **`logo.svg`:** The designed logo for the app. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Integration with Backend
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The frontend of this application works in conjunction with the provided backend Sinatra API, which offers endpoints for managing aspects and strategies. Please ensure that you have the backend server up and running and properly configured before using this frontend. The backend API endpoints are as follows:
 
-## Learn More
+- **GET `/aspects`:** Retrieves a list of all aspects with their associated strategies.
+- **POST `/aspects`:** Creates a new aspect on the server, allowing you to specify the aspect's name.
+- **GET `/strategies`:** Retrieves a list of all strategies.
+- **POST `/strategies`:** Creates a new strategy on the server, allowing you to specify the strategy's name and associated aspect.
+- **PATCH `/strategies/:id`:** Updates the name of a specific strategy.
+- **DELETE `/strategies/:id`:** Deletes a specific strategy.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Please ensure that the backend API is reachable from the frontend. You might need to update the API URLs in the frontend services if necessary.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Frontend State Management
 
-### Code Splitting
+Proper front end state management is crucial for this application. It's essential to update state using a `setState` function after receiving responses from POST, PATCH, or DELETE requests. Avoid relying on GET requests to update state directly.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## RESTful Routes
 
-### Analyzing the Bundle Size
+The application follows RESTful conventions for defining routes. The routes are designed to be intuitive and aligned with CRUD operations.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Optimal Backend Usage
 
-### Making a Progressive Web App
+The frontend optimally uses the backend by passing JSON for related associations from the back end to the front end. Active Record methods are used in the controller to grab the necessary data from the database and provide it as JSON to the front end. There's no reliance on filtering front end state or separate fetch requests to retrieve related data.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Requirements Fulfilled
 
-### Advanced Configuration
+This project fulfills the following requirements:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Utilizes Active Record to interact with a database.
+- Implements at least two models (aspects and strategies) with a one-to-many relationship.
+- Provides create and read actions for both models.
+- Implements full CRUD capability for the strategies model, including a form for the update action.
+- Uses proper front end state management with `setState`.
+- Follows good OO design patterns with separate classes for models.
+- Adheres to RESTful conventions for routes.
+- Passes JSON for related associations from the backend.
 
-### Deployment
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Once both the frontend and backend are running, you can access the aspects and strategies management application by opening `http://localhost:3000` in your web browser. You can manage aspects and strategies seamlessly through the user interface.
 
-### `npm run build` fails to minify
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Contributions are welcome! If you'd like to contribute to this project, feel free to open issues or submit pull requests. Please follow the existing code style and provide clear commit messages.
+
