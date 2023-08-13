@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function AspectLink({aspect}) {
+function AspectLink({ aspect }) {
   return (
     <div>
         <Link to={`/aspects/${aspect.id}`}>
