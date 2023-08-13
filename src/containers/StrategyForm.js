@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function StrategyForm({ handleAddStrategy, aspectId }) {
+function StrategyForm({ setStrategy, handleAddStrategy, aspectId }) {
   const [name, setName] = useState('');
 
   function handleSubmit(e) {
