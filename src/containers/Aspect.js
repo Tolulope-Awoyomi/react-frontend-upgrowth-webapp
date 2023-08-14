@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Strategy from '../components/Strategy';
 import StrategyForm from './StrategyForm';
 
-function Aspect({ aspects, setStrategy, handleAddStrategy, handleUpdateStrategy, handleDeleteStrategy }) {
+function Aspect({ aspects, handleAddStrategy, handleUpdateStrategy, handleDeleteStrategy }) {
   const params = useParams();
   const aspectId = parseInt(params.id); 
   const [selectedAspect, setSelectedAspect] = useState({
@@ -25,7 +25,7 @@ function Aspect({ aspects, setStrategy, handleAddStrategy, handleUpdateStrategy,
       {selectedAspect.strategies.map((strategy) => (
         <Strategy key={strategy.id} strategy={strategy} handleUpdateStrategy={handleUpdateStrategy} handleDeleteStrategy={handleDeleteStrategy}/>
       ))}
-      <StrategyForm aspects={aspects} setStrategy={setStrategy} handleAddStrategy={handleAddStrategy} aspectId={aspectId} />
+      <StrategyForm aspects={aspects} handleAddStrategy={handleAddStrategy} aspectId={aspectId} />
     </div>
   );
 }

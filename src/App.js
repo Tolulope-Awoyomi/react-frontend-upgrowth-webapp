@@ -9,7 +9,6 @@ import Aspect from './containers/Aspect';
 
 function App() {
   const [aspects, setAspects] = useState([])
-  const [strategy, setStrategy] = useState([])
 
     useEffect(() => {
         fetch("http://localhost:9292/aspects")
@@ -80,7 +79,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/aspects" element={<Aspects aspects={aspects} handleAddAspect={handleAddAspect} />} />
-          <Route path="/aspects/:id" element={<Aspect aspects={aspects} setStrategy={setStrategy} handleAddStrategy={handleAddStrategy} handleUpdateStrategy={handleUpdateStrategy} handleDeleteStrategy={handleDeleteStrategy} />} />
+          <Route path="/aspects/:id" element={<Aspect aspects={aspects} handleAddStrategy={handleAddStrategy} handleUpdateStrategy={handleUpdateStrategy} handleDeleteStrategy={handleDeleteStrategy} />} />
         </Routes>
     </div>
     </>
