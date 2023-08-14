@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import logo from './logo.svg';
+import logo from './logo.png';
 import './App.css';
 import Home from './components/Home';
 import Navigation from './components/Navigation';

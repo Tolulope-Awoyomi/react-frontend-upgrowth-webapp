@@ -36,3 +36,50 @@
     transform: rotate(360deg);
   }
 }
+
+* {
+  margin: 2;
+  padding: 10;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(231, 231, 231);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 17px;
+}
+
+button,
+select,
+input {
+  border: outset;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  background: whitesmoke;
+} 
+
+.HomePage {
+  color: rgb(31, 151, 242);
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+}
+
+.description{
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  font-weight: bold;
+  color: rgb(31, 151, 242);
+}
